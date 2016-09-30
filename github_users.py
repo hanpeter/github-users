@@ -5,7 +5,6 @@ import csv
 import sys
 import json
 from pprint import pformat
-from logging import getLogger
 import click
 from github3 import login
 
