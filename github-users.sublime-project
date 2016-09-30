@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"folder_exclude_patterns": [
+				"build",
+				"cover",
+				"dist",
+				"*.egg-info"
+			],
+			"path": "github-users",
+			"file_exclude_patterns": [
+				".coverage",
+				".noseids"
+			]
+		}
+	]
+}
