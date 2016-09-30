@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"folder_exclude_patterns": [
+				"build",
+				"cover",
+				"dist",
+				"*.egg-info",
+				".idea"
+			],
+			"path": ".",
+			"file_exclude_patterns": [
+				".coverage",
+				".noseids"
+			]
+		}
+	]
+}
