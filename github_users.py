@@ -17,7 +17,7 @@ CONTEXT_SETTINGS = {
 
 
 class Application(object):
-    _DEFAULT_FIELD_NAMES = ['name', 'login']
+    DEFAULT_FIELD_NAMES = ['name', 'login']
 
     def __init__(self, github_token):
         """
@@ -33,7 +33,7 @@ class Application(object):
         # Grabs the current user
         self._me = self._github.user()
 
-    def _get_users(self, org_name, field_names=_DEFAULT_FIELD_NAMES):
+    def _get_users(self, org_name, field_names=DEFAULT_FIELD_NAMES):
         """
         Finds one organization with the given name then yields the given fields of each users in the organization
         as a list of dictionaries.
@@ -58,7 +58,7 @@ class Application(object):
             user = self._github.user(login=user.login)
             yield dict((field, getattr(user, field, '')) for field in field_names)
 
-    def csv(self, org_name, output=None, field_names=_DEFAULT_FIELD_NAMES, *args, **kwargs):
+    def csv(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
         Creates a csv file containing all the users in the given organization
 
@@ -90,7 +90,7 @@ class Application(object):
 
         out_stream.close()
 
-    def json(self, org_name, output=None, field_names=_DEFAULT_FIELD_NAMES, *args, **kwargs):
+    def json(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
         Creates a json file containing all the users in the given organization
 
@@ -117,7 +117,7 @@ class Application(object):
 
         out_stream.close()
 
-    def pprint(self, org_name, output=None, field_names=_DEFAULT_FIELD_NAMES, *args, **kwargs):
+    def pprint(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
         Creates a text file containing all the users in the given organization
 
@@ -155,14 +155,14 @@ class Application(object):
 )
 @click.argument('org_name')
 @click.option(
-    '--output-format',
+    '-f', '--output-format',
     # GOTCHA: Because getattr is used, it is very important for the user input to match the function name
     type=click.Choice(['csv', 'json', 'pprint']),
     default='pprint',
-    help='The format in which you want the output.',
+    help='The format in which you want the output. (default: pprint)',
 )
 @click.option(
-    '--output',
+    '-o', '--output',
     type=click.Path(),
     default=None,
     help=(
@@ -171,7 +171,18 @@ class Application(object):
         'If not set, the output will be printed to stdout.'
     )
 )
-def main(github_token, org_name, output_format, output):
+@click.option(
+    '-n', '--field-names',
+    type=str,
+    multiple=True,
+    default=Application.DEFAULT_FIELD_NAMES,
+    help=(
+        'List of fields to be written. Refer to https://developer.github.com/v3/users/#response-1 on '
+        'the names of the fields. If invalid field is listed, the values will be all empty string.'
+        '(default: ' + str(Application.DEFAULT_FIELD_NAMES) + ')'
+    )
+)
+def main(github_token, org_name, output_format, output, field_names):
     app = Application(github_token=github_token)
     # Figure out which function to call based on the user input.
-    getattr(app, output_format)(org_name=org_name, output=output)
+    getattr(app, output_format)(org_name=org_name, output=output, field_names=field_names)
