@@ -19,7 +19,7 @@ setup(
     name='github-users',
     version=VERSION,
     author='@hanpeter',
-    description='Returns a list of users in a GitHub orgs as a csv file',
+    description='CLI that returns a list of users in a GitHub organization',
     url=REPO_URL,
     download_url=DOWNLOAD_URL,
     classifiers=[
