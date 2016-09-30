@@ -187,6 +187,19 @@ class Application(object):
     )
 )
 def main(org_name, github_token, output_format, output, field_names):
+    """
+    Prints out a list of users in the given GitHub organization.
+
+    \b
+    If you want a quick list:
+        github-users krux
+    If you want it in CSV:
+        github-users krux -f csv
+    If you want it in a CSV file:
+        github-users krux -f csv -o ~/tmp/users.csv
+    If you want the user's location also:
+        github-users krux -n name -n login -n location
+    """
     app = Application(github_token=github_token)
     # Figure out which function to call based on the user input.
     getattr(app, output_format)(org_name=org_name, output=output, field_names=field_names)
