@@ -112,6 +112,7 @@ class Application(object):
             out_stream = sys.stdout
 
         json.dump(list(self._get_users(org_name=org_name, field_names=field_names)), out_stream)
+        # json.dump() does not create an empty line at the end of the file. Make one manually.
         out_stream.write('\n')
 
         out_stream.close()
@@ -139,6 +140,7 @@ class Application(object):
             out_stream = sys.stdout
 
         out_stream.write(pformat(list(self._get_users(org_name=org_name, field_names=field_names))))
+        # json.dump() does not create an empty line at the end of the file. Make one manually.
         out_stream.write('\n')
 
         out_stream.close()
@@ -153,7 +155,7 @@ class Application(object):
     help=(
         "GitHub authentication token. If you don't have one, create one "
         "with `read:org` permission from here: https://github.com/settings/tokens. "
-        "Can be also set is `GITHUB_TOKEN` environment variable"
+        "Can be also set as `GITHUB_TOKEN` environment variable."
     ),
 )
 @click.option(
