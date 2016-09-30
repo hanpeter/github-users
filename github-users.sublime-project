@@ -5,9 +5,10 @@
 				"build",
 				"cover",
 				"dist",
-				"*.egg-info"
+				"*.egg-info",
+				".idea"
 			],
-			"path": "github-users",
+			"path": ".",
 			"file_exclude_patterns": [
 				".coverage",
 				".noseids"
