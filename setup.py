@@ -36,7 +36,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-
+            'github_users=github_users:main'
         ],
     },
 )
