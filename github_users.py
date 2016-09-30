@@ -146,14 +146,17 @@ class Application(object):
 
 
 @click.command(context_settings=CONTEXT_SETTINGS)
-@click.argument(
-    'github_token',
-    # help=(
-    #     "GitHub authentication token. If you don't have one, create one "
-    #     "with `read:org` permission from here: https://github.com/settings/tokens"
-    # ),
+@click.argument('org-name')
+@click.option(
+    '-t', '--github-token',
+    envvar='GITHUB_TOKEN',
+    required=True,
+    help=(
+        "GitHub authentication token. If you don't have one, create one "
+        "with `read:org` permission from here: https://github.com/settings/tokens. "
+        "Can be also set is `GITHUB_TOKEN` environment variable"
+    ),
 )
-@click.argument('org_name')
 @click.option(
     '-f', '--output-format',
     # GOTCHA: Because getattr is used, it is very important for the user input to match the function name
@@ -182,7 +185,7 @@ class Application(object):
         '(default: ' + str(Application.DEFAULT_FIELD_NAMES) + ')'
     )
 )
-def main(github_token, org_name, output_format, output, field_names):
+def main(org_name, github_token, output_format, output, field_names):
     app = Application(github_token=github_token)
     # Figure out which function to call based on the user input.
     getattr(app, output_format)(org_name=org_name, output=output, field_names=field_names)
