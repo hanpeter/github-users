@@ -17,6 +17,7 @@ CONTEXT_SETTINGS = {
 
 class Application(object):
     DEFAULT_FIELD_NAMES = ['name', 'login']
+    VERSION = '0.0.2'
 
     def __init__(self, github_token):
         """
@@ -48,7 +49,7 @@ class Application(object):
         # Find the organization with the given name
         # GOTCHA: Assumes the given name is exact and looks for a perfect match
         # GOTCHA: Assumes there is only 1 organization with the given name
-        org = [org for org in self._github.iter_orgs(login=self._me.login) if org.login == org_name][0]
+        org = [org for org in self._github.iter_orgs() if org.login == org_name][0]
 
         for user in org.iter_members():
             # For every user, grab the whole user object and yield
@@ -185,6 +186,9 @@ class Application(object):
         'the names of the fields. If invalid field is listed, the values will be all empty string.'
         '(default: ' + str(Application.DEFAULT_FIELD_NAMES) + ')'
     )
+)
+@click.version_option(
+    version=Application.VERSION,
 )
 def main(org_name, github_token, output_format, output, field_names):
     """
