@@ -48,7 +48,7 @@ class Application(object):
         # Find the organization with the given name
         # GOTCHA: Assumes the given name is exact and looks for a perfect match
         # GOTCHA: Assumes there is only 1 organization with the given name
-        org = [org for org in self._github.iter_orgs(login=self._me.login) if org.login == org_name][0]
+        org = [org for org in self._github.iter_orgs() if org.login == org_name][0]
 
         for user in org.iter_members():
             # For every user, grab the whole user object and yield
