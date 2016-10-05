@@ -2,10 +2,11 @@
 
 from __future__ import absolute_import
 from setuptools import setup
+from github_users import Application
 
 
 # We use the version to construct the DOWNLOAD_URL.
-VERSION = '0.0.1'
+VERSION = Application.VERSION
 
 # URL to the repository on Github.
 REPO_URL = 'https://github.com/hanpeter/github-users'
