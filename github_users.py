@@ -17,6 +17,7 @@ CONTEXT_SETTINGS = {
 
 class Application(object):
     DEFAULT_FIELD_NAMES = ['name', 'login']
+    VERSION = '0.0.1'
 
     def __init__(self, github_token):
         """
@@ -185,6 +186,9 @@ class Application(object):
         'the names of the fields. If invalid field is listed, the values will be all empty string.'
         '(default: ' + str(Application.DEFAULT_FIELD_NAMES) + ')'
     )
+)
+@click.version_option(
+    version=Application.VERSION,
 )
 def main(org_name, github_token, output_format, output, field_names):
     """
