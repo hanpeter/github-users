@@ -56,7 +56,7 @@ class Application(object):
             # This will cause extra requests and slow things down, but performance for this application
             # is not that important and extra data is always nice
             user = self._github.user(login=user.login)
-            yield dict((field, getattr(user, field, '')) for field in field_names)
+            yield dict((field, getattr(user, field, '').encode('utf-8')) for field in field_names)
 
     def csv(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
