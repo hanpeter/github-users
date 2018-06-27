@@ -17,7 +17,7 @@ CONTEXT_SETTINGS = {
 
 class Application(object):
     DEFAULT_FIELD_NAMES = ['name', 'login']
-    VERSION = '0.0.2'
+    VERSION = '0.1.0'
 
     def __init__(self, github_token):
         """
