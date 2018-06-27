@@ -17,7 +17,7 @@ CONTEXT_SETTINGS = {
 
 class Application(object):
     DEFAULT_FIELD_NAMES = ['name', 'login']
-    VERSION = '0.0.2'
+    VERSION = '0.1.0'
 
     def __init__(self, github_token):
         """
@@ -56,7 +56,7 @@ class Application(object):
             # This will cause extra requests and slow things down, but performance for this application
             # is not that important and extra data is always nice
             user = self._github.user(login=user.login)
-            yield dict((field, getattr(user, field, '')) for field in field_names)
+            yield dict((field, getattr(user, field, '').encode('utf-8')) for field in field_names)
 
     def csv(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
