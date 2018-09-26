@@ -1,4 +1,10 @@
 # GitHub Users
+
+![GitHub tag](https://img.shields.io/github/tag/hanpeter/github-users.svg?logo=github)
+![GitHub last commit](https://img.shields.io/github/last-commit/hanpeter/github-users.svg?logo=github)
+![Requires.io](https://img.shields.io/requires/github/hanpeter/github-users.svg)
+[![license](https://img.shields.io/github/license/hanpeter/github-users.svg)](LICENSE)
+
 `github-users` is a CLI that returns a list of users in a GitHub organization
 
 ## Example Usage
