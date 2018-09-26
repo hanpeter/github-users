@@ -19,16 +19,18 @@ DOWNLOAD_URL = ''.join((REPO_URL, '/tarball/release/', VERSION))
 setup(
     name='github-users',
     version=VERSION,
-    author='@hanpeter',
+    author='Peter Han <git@peterhan.me>',
     description='CLI that returns a list of users in a GitHub organization',
     url=REPO_URL,
     download_url=DOWNLOAD_URL,
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development',
+        'Topic :: Software Development :: Documentation',
+        'Topic :: Utilities',
     ],
     py_modules=['github_users'],
     install_requires=[
