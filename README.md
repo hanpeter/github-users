@@ -1,5 +1,6 @@
 # GitHub Users
 
+[![Travis](https://img.shields.io/travis/hanpeter/github-users.svg?logo=travis)](https://travis-ci.org/hanpeter/github-users)
 ![GitHub tag](https://img.shields.io/github/tag/hanpeter/github-users.svg?logo=github)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hanpeter/github-users.svg?logo=github)
 ![Requires.io](https://img.shields.io/requires/github/hanpeter/github-users.svg)
@@ -44,4 +45,4 @@ Options:
                                   is listed, the values will be all empty
                                   string.(default: ['name', 'login'])
   -h, --help                      Show this message and exit.
-  ```
+```
