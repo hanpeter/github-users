@@ -9,6 +9,7 @@ click = ">=6.6,<7.0"
 
 [dev-packages]
 pycodestyle = "*"
+pytest = "*"
 
 [requires]
 python_version = "2.7"

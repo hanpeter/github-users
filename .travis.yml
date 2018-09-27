@@ -10,3 +10,4 @@ install:
   - pipenv install --dev
 script:
   - pycodestyle
+  - pytest
