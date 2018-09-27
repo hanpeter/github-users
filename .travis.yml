@@ -1,0 +1,10 @@
+language: python
+python:
+  - "2.7"
+install:
+  # Print out the version of Python and pip
+  - python --version
+  - pip --version
+  # Install dependencies
+  - pip install -r requirements.txt
+script: echo "TEST!"
