@@ -1,6 +1,10 @@
 language: python
 python:
   - "2.7"
+branches:
+  only:
+  - master
+  - /^\d+\.\d+\.\d+$/  # Use sem var
 install:
   # Print out the version of Python and pip
   - python --version
@@ -9,5 +13,7 @@ install:
   - pip install pipenv
   - pipenv install --dev
 script:
+  # Linter
   - pycodestyle
+  # Unit tests
   - pytest
