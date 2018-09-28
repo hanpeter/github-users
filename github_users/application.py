@@ -5,7 +5,7 @@ import csv
 import sys
 import json
 from pprint import pformat
-from github3 import login
+from github3 import login, GitHub
 
 
 class Application(object):
@@ -22,8 +22,6 @@ class Application(object):
         """
         # Login to github using the given token
         self._github = login(token=github_token)
-        # Grabs the current user
-        self._me = self._github.user()
 
     def _get_users(self, org_name, field_names=DEFAULT_FIELD_NAMES):
         """
@@ -41,14 +39,22 @@ class Application(object):
         # Find the organization with the given name
         # GOTCHA: Assumes the given name is exact and looks for a perfect match
         # GOTCHA: Assumes there is only 1 organization with the given name
-        org = [org for org in self._github.iter_orgs() if org.login == org_name][0]
+        org = next(org for org in self._github.organizations() if org.login == org_name)
 
-        for user in org.iter_members():
+        for user in org.members():
             # For every user, grab the whole user object and yield
             # This will cause extra requests and slow things down, but performance for this application
             # is not that important and extra data is always nice
-            user = self._github.user(login=user.login)
-            yield dict((field, getattr(user, field, '').encode('utf-8')) for field in field_names)
+            user = self._github.user(username=user.login)
+
+            user_dict = {}
+            for field in field_names:
+                value = getattr(user, field, '')
+                if value is None:
+                    value = ''
+                user_dict[field] = value.encode('utf-8')
+
+            yield user_dict
 
     def csv(self, org_name, output=None, field_names=DEFAULT_FIELD_NAMES, *args, **kwargs):
         """
