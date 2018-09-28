@@ -1,9 +1,9 @@
 # GitHub Users
 
 [![Travis](https://img.shields.io/travis/hanpeter/github-users.svg?logo=travis)](https://travis-ci.org/hanpeter/github-users)
-![GitHub tag](https://img.shields.io/github/tag/hanpeter/github-users.svg?logo=github)
-![GitHub last commit](https://img.shields.io/github/last-commit/hanpeter/github-users.svg?logo=github)
-![Requires.io](https://img.shields.io/requires/github/hanpeter/github-users.svg)
+[![GitHub tag](https://img.shields.io/github/tag/hanpeter/github-users.svg?logo=github)](https://github.com/hanpeter/github-users/tags)
+[![GitHub last commit](https://img.shields.io/github/last-commit/hanpeter/github-users.svg?logo=github)](https://github.com/hanpeter/github-users/commits)
+[![Requires.io](https://img.shields.io/requires/github/hanpeter/github-users.svg)](https://requires.io/github/hanpeter/github-users/requirements)
 [![license](https://img.shields.io/github/license/hanpeter/github-users.svg)](LICENSE)
 
 `github-users` is a CLI that returns a list of users in a GitHub organization
