@@ -31,10 +31,6 @@ setup(
         'Topic :: Software Development :: Documentation',
         'Topic :: Utilities',
     ],
-    install_requires=[
-        'click',
-        'github3.py',
-    ],
     entry_points={
         'console_scripts': [
             'github-users=github_users:main',
