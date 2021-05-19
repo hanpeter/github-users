@@ -52,7 +52,7 @@ class Application(object):
                 value = getattr(user, field, '')
                 if value is None:
                     value = ''
-                user_dict[field] = value.encode('utf-8')
+                user_dict[field] = value
 
             yield user_dict
 

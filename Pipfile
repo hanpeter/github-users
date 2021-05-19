@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-click = ">=7.0,<8.0"
-"github3.py" = ">=1.2.0,<2.0"
+click = ">=8.0,<9.0"
+"github3.py" = ">=2.0,<3.0"
 
 [dev-packages]
 pycodestyle = "*"
 pytest = "*"
 
 [requires]
-python_version = "2.7"
+python_version = "3.9"
