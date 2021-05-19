@@ -3,7 +3,7 @@ python:
   - "3.9"
 branches:
   only:
-  - master
+  - main
   - /^\d+\.\d+\.\d+$/  # Use sem var
 install:
   # Print out the version of Python and pip
