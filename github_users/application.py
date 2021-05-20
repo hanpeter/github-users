@@ -36,10 +36,16 @@ class Application(object):
         :type field_names: list[str]
         :return: List of users in the given organization
         """
+        is_teams_requested = 'team_names' in field_names
+
         # Find the organization with the given name
         # GOTCHA: Assumes the given name is exact and looks for a perfect match
         # GOTCHA: Assumes there is only 1 organization with the given name
         org = next(org for org in self._github.organizations() if org.login == org_name)
+        teams = (
+            {t.name: set(m.login for m in t.members()) for t in org.teams()}
+            if is_teams_requested else {}
+        )
 
         for user in org.members():
             # For every user, grab the whole user object and yield
@@ -53,6 +59,9 @@ class Application(object):
                 if value is None:
                     value = ''
                 user_dict[field] = value
+
+            if is_teams_requested:
+                user_dict['team_names'] = [team for team, members in teams.items() if user.login in members]
 
             yield user_dict
 
