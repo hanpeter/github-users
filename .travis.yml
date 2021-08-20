@@ -11,7 +11,7 @@ install:
   - pip --version
   # Install dependencies
   - pip install pipenv
-  - pipenv install --system --dev
+  - pipenv install --dev
 script:
   # Linter
   - pycodestyle
