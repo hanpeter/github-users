@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.12
 
 # Setup env
 ENV LANG=C.UTF-8
@@ -9,17 +9,17 @@ ENV PYTHONFAULTHANDLER=1
 # Set up working directory
 WORKDIR /github-users
 
+# Set up Poetry
+ENV POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=1 \
+    POETRY_NO_CACHE=1
+RUN pip install poetry==1.6.1
+
 # Install dependencies
-# XXX: Copy only Pipfile & Pipfile.lock first to take
-#      advantage of Docker build cache
-COPY Pipfile* ./
-RUN pip install pipenv
-RUN pipenv install --system --deploy
+COPY pyproject.toml poetry.lock README.md ./
+RUN poetry install --without dev --no-root
 
 # Bundle source code
 COPY . .
 
-# Install github-users
-RUN python setup.py install
-
-ENTRYPOINT ["github-users"]
+ENTRYPOINT ["poetry", "run", "github-users"]
