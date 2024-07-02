@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "github-users"
+version = "0.4.1"
+description = "CLI that returns a list of users in a GitHub organization"
+authors = ["Peter Han <git@peterhan.ca>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = "^8.1"
+github3-py = "^2.1"
+
+[tool.poetry.group.dev.dependencies]
+pycodestyle = "^2.12"
+pytest = "^8.2"
+
+[tool.poetry.scripts]
+github-users = "github_users.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
