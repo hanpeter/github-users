@@ -1,6 +1,5 @@
 # GitHub Users
 
-[![Travis](https://img.shields.io/travis/hanpeter/github-users.svg?logo=travis)](https://travis-ci.org/hanpeter/github-users)
 [![GitHub tag](https://img.shields.io/github/tag/hanpeter/github-users.svg?logo=github)](https://github.com/hanpeter/github-users/tags)
 [![GitHub last commit](https://img.shields.io/github/last-commit/hanpeter/github-users.svg?logo=github)](https://github.com/hanpeter/github-users/commits)
 [![license](https://img.shields.io/github/license/hanpeter/github-users.svg)](LICENSE)
